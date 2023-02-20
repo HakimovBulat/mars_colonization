@@ -155,6 +155,34 @@ def astronaut_selection():
         print(request.form.get('accept'))
         return "Форма отправлена"
 
-
+@app.route('/choice/<planet_name>')
+def choice(planet_name):
+    planets = {'меркурий': ['Здесь очень жарко', 'День круглые сутки'], 
+               'земля': ['Мы уже привыкли здесь жить', 'Здесь есть жизнь'], 
+               'марс': ['Есть атмосфера', 'Существует магнитное поле'], 
+               'венера': ['Очень красивая планета', 'Доволно-таки тепло'], 
+               'уран': ['Холодновато', 'Зато не нужен кондиционер'], 
+               'нептун': ['Самая далёкая планета от солцна', 'Не нужны противосолнечные очки'], 
+               'сатурн': ['Есть интересные кольца', 'Состоит из газа'],
+               'юпитер': ['Самая большая планета в солнечной системе', 'Имеет интересный окрас']
+               }
+    return f'''<!doctype html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <link rel="stylesheet" 
+                    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
+                    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" 
+                    crossorigin="anonymous">
+                    <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
+                    <title>Варианты выбора</title>
+                  </head>
+                  <body>
+                    <h1>Моё предложение: {planet_name}</h1>
+                    <div class="alert alert-secondary" role="alert"> {planets[planet_name][0]}</div>
+                    <div class="alert alert-success" role="alert"> {planets[planet_name][1]} </div>
+                  </body>
+                </html>'''
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
