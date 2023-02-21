@@ -206,5 +206,38 @@ def results(nickname, level, rating):
                     <div class="alert alert-danger" role="alert">Поздравляем и желаем удачи!</div>
                 </body>
             </html>'''
+
+
+@app.route('/carousel')
+def carousel():
+    return f'''<!doctype htnl>
+            <html>
+                <head>
+                    <meta charset="utf-8">
+                    <title>Результаты</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <link rel="stylesheet" 
+                    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
+                    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" 
+                    crossorigin="anonymous">
+                </head>
+                <body>
+                <h1>Пейзажи марса</h1>
+                  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img class="d-block w-100" src="{url_for('static', filename='img/landscape1.jpg')}" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="{url_for('static', filename='img/landscape2.jpg')}" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="{url_for('static', filename='img/landscape3.jpg')}" alt="Third slide">
+                    </div>
+                  </div>
+                </div>
+                </body>
+            </html>'''
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
